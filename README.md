@@ -70,6 +70,34 @@ A modern, beautiful AI-powered resume and CV builder with multiple templates and
 9. Lavender
 10. Sunset
 
+## Deployment to Vercel 🚀
+
+This project is configured for easy deployment to Vercel!
+
+### Steps to Deploy:
+
+1. **Sign in to Vercel**: Go to [https://vercel.com](https://vercel.com) and sign in or create an account (it's free!)
+
+2. **Import Your GitHub Repository**:
+   - Click "New Project"
+   - Select your `Resume-Builder-` repository
+   - Vercel will automatically detect it's a Vite project!
+
+3. **Configure Project Settings**:
+   - For "Framework Preset" select "Vite"
+   - Set "Root Directory" to `frontend`
+   - Click "Deploy"
+
+4. **Wait for Deployment**: Vercel will build and deploy your app! This usually takes 1-2 minutes
+
+5. **Done!** You'll get a live URL like `https://resume-builder-abc123.vercel.app`
+
+### Alternatively, Deploy with One Click:
+
+You can also use the Vercel deploy button (add this to your README later if you want):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frudra12-debug%2FResume-Builder-)
+
 ## License 📄
 
 MIT

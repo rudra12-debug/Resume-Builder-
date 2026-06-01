@@ -1,0 +1,22 @@
+{
+  "name": "ai-resume-builder",
+  "version": "1.0.0",
+  "description": "AI-powered resume and CV builder with 5 professional templates and 10 color schemes!",
+  "scripts": {
+    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm start\"",
+    "build": "cd frontend && npm run build",
+    "install-all": "cd frontend && npm install && cd ../backend && npm install"
+  },
+  "keywords": [
+    "resume",
+    "cv",
+    "ai",
+    "builder",
+    "templates"
+  ],
+  "author": "Rudra Pratap Singh",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
