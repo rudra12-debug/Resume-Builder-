@@ -1,0 +1,192 @@
+.elegant-executive-template {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #2c2c2c;
+}
+
+.ee-header {
+  position: relative;
+  padding: 50px 40px 30px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  z-index: 0;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-img-container {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid white;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+  margin: 0 auto 20px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ee-header h1 {
+  font-size: 2.8rem;
+  margin: 0 0 8px;
+  color: #1a1a1a;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin: 0 0 20px;
+  font-style: italic;
+}
+
+.contact-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.contact-line .divider {
+  color: #999;
+}
+
+.contact-line a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-line a:hover {
+  text-decoration: underline;
+}
+
+.ee-body {
+  padding: 30px 40px 50px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.content-section {
+  margin-bottom: 35px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.line-decoration {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+.section-title h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #333;
+  margin: 0;
+}
+
+.experience-entry, .education-entry {
+  margin-bottom: 25px;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.experience-entry h4, .education-entry h4 {
+  font-size: 1.15rem;
+  margin: 0 0 5px;
+  color: #222;
+}
+
+.company-name, .degree {
+  color: var(--primary);
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+}
+
+.date-range {
+  color: #777;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.summary-text, .entry-description {
+  line-height: 1.8;
+  color: #444;
+  margin: 0;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+}
+
+.skills-list li {
+  padding: 8px 0;
+  border-bottom: 1px dotted #ddd;
+  font-size: 0.98rem;
+  color: #444;
+}
+
+.skills-list li:last-child {
+  border-bottom: none;
+}
+
+.cert-entry {
+  margin-bottom: 15px;
+}
+
+.cert-name {
+  font-weight: 600;
+  margin: 0 0 3px;
+  color: #222;
+}
+
+.cert-org {
+  color: #555;
+  margin: 0 0 2px;
+  font-size: 0.95rem;
+}
+
+.cert-date {
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+}

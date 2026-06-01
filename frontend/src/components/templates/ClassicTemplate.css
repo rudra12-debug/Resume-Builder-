@@ -1,0 +1,122 @@
+.classic-template {
+  max-width: 850px;
+  margin: 0 auto;
+  font-family: 'Times New Roman', Times, serif;
+  color: #000;
+  background: white;
+  padding: 50px;
+}
+
+.classic-header {
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-img-container {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.classic-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.job-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.contact-info {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.contact-info a {
+  color: #444;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.classic-header hr {
+  border: none;
+  border-top: 2px solid #333;
+  margin-top: 20px;
+}
+
+.classic-template section {
+  margin-bottom: 25px;
+}
+
+.classic-template h2 {
+  color: var(--primary);
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.experience-item, .education-item {
+  margin-bottom: 20px;
+}
+
+.exp-header, .edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.classic-template h3 {
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.company, .school {
+  font-style: italic;
+  color: #444;
+}
+
+.date {
+  color: #444;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.description {
+  line-height: 1.6;
+  color: #333;
+}
+
+.skills-text {
+  line-height: 1.6;
+  color: #333;
+}
+
+.cert-item {
+  margin-bottom: 8px;
+  color: #333;
+}
