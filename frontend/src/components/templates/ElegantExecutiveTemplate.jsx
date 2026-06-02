@@ -1,5 +1,11 @@
 import './ElegantExecutiveTemplate.css';
 
+const formatDateForDisplay = (dateStr) => {
+  if (!dateStr || dateStr === 'Present') return dateStr;
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+};
+
 const ElegantExecutiveTemplate = ({ data, color, type }) => {
   const { personalInfo, summary, experience, education, skills, certifications, jobProfile } = data;
   const skillsList = skills.split(',').map(s => s.trim()).filter(s => s);
@@ -42,20 +48,22 @@ const ElegantExecutiveTemplate = ({ data, color, type }) => {
             </section>
           )}
 
-          {experience.length > 0 && (
+          {experience.length > 0 && experience.some(e => e.company || e.position) && (
             <section className="content-section">
               <div className="section-title">
                 <div className="line-decoration"></div>
                 <h3>Career Experience</h3>
               </div>
-              {experience.map((exp, index) => (
+              {experience.filter(e => e.company || e.position).map((exp, index) => (
                 <div key={index} className="experience-entry">
                   <div className="entry-header">
                     <div>
                       <h4>{exp.position}</h4>
                       <p className="company-name">{exp.company}</p>
                     </div>
-                    <span className="date-range">{exp.startDate} - {exp.endDate}</span>
+                    <span className="date-range">
+                      {formatDateForDisplay(exp.startDate)} - {formatDateForDisplay(exp.endDate)}
+                    </span>
                   </div>
                   {exp.description && <p className="entry-description">{exp.description}</p>}
                 </div>
@@ -63,18 +71,18 @@ const ElegantExecutiveTemplate = ({ data, color, type }) => {
             </section>
           )}
 
-          {education.length > 0 && (
+          {education.length > 0 && education.some(e => e.school || e.degree) && (
             <section className="content-section">
               <div className="section-title">
                 <div className="line-decoration"></div>
                 <h3>Education</h3>
               </div>
-              {education.map((edu, index) => (
+              {education.filter(e => e.school || e.degree).map((edu, index) => (
                 <div key={index} className="education-entry">
                   <div className="entry-header">
                     <div>
                       <h4>{edu.school}</h4>
-                      <p className="degree">{edu.degree} in {edu.field}</p>
+                      <p className="degree">{edu.degree} {edu.field && `in ${edu.field}`}</p>
                     </div>
                     <span className="date-range">{edu.startYear} - {edu.endYear}</span>
                   </div>
@@ -108,8 +116,8 @@ const ElegantExecutiveTemplate = ({ data, color, type }) => {
               {certifications.filter(c => c.name).map((cert, index) => (
                 <div key={index} className="cert-entry">
                   <p className="cert-name">{cert.name}</p>
-                  <p className="cert-org">{cert.issuer}</p>
-                  {cert.date && <p className="cert-date">{cert.date}</p>}
+                  {cert.issuer && <p className="cert-org">{cert.issuer}</p>}
+                  {cert.date && <p className="cert-date">{formatDateForDisplay(cert.date)}</p>}
                 </div>
               ))}
             </section>

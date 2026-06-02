@@ -84,6 +84,12 @@ const ResumeForm = ({ onSubmit }) => {
     onSubmit(formState);
   };
 
+  const formatDateForDisplay = (dateStr) => {
+    if (!dateStr || dateStr === 'Present') return dateStr;
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  };
+
   return (
     <div className="resume-form-container">
       <h1>AI Resume Builder</h1>
@@ -207,18 +213,32 @@ const ResumeForm = ({ onSubmit }) => {
               />
               <div className="date-inputs">
                 <input
-                  type="text"
-                  placeholder="Start Date (MM/YYYY)"
+                  type="month"
+                  placeholder="Start Date"
                   value={exp.startDate}
                   onChange={(e) => handleArrayChange('experience', index, 'startDate', e.target.value)}
                 />
-                <input
-                  type="text"
-                  placeholder="End Date (MM/YYYY or Present)"
-                  value={exp.endDate}
-                  onChange={(e) => handleArrayChange('experience', index, 'endDate', e.target.value)}
-                />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <input
+                    type={exp.endDate === 'Present' ? 'text' : 'month'}
+                    placeholder="End Date"
+                    value={exp.endDate}
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      if (val.toLowerCase() === 'present') val = 'Present';
+                      handleArrayChange('experience', index, 'endDate', val);
+                    }}
+                  />
+                  <label style={{ fontSize: '12px', color: '#666' }}>
+                    Enter "Present" if currently working
+                  </label>
+                </div>
               </div>
+              {(exp.startDate && exp.endDate && exp.endDate !== 'Present' && new Date(exp.startDate) > new Date(exp.endDate)) && (
+                <p className="error-msg" style={{ color: '#dc2626', fontSize: '14px' }}>
+                  Start date must be before end date
+                </p>
+              )}
               <textarea
                 placeholder="Job Description"
                 rows={3}
@@ -275,6 +295,11 @@ const ResumeForm = ({ onSubmit }) => {
                   max="2100"
                 />
               </div>
+              {(edu.startYear && edu.endYear && parseInt(edu.startYear) > parseInt(edu.endYear)) && (
+                <p className="error-msg" style={{ color: '#dc2626', fontSize: '14px' }}>
+                  Start year must be before end year
+                </p>
+              )}
               {formState.education.length > 1 && (
                 <button type="button" className="remove-btn" onClick={() => removeItem('education', index)}>Remove</button>
               )}
@@ -312,7 +337,7 @@ const ResumeForm = ({ onSubmit }) => {
                 onChange={(e) => handleArrayChange('certifications', index, 'issuer', e.target.value)}
               />
               <input
-                type="text"
+                type="date"
                 placeholder="Date Issued"
                 value={cert.date}
                 onChange={(e) => handleArrayChange('certifications', index, 'date', e.target.value)}

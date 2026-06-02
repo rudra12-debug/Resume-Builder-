@@ -1,5 +1,11 @@
 import './ModernTemplate.css';
 
+const formatDateForDisplay = (dateStr) => {
+  if (!dateStr || dateStr === 'Present') return dateStr;
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+};
+
 const ModernTemplate = ({ data, color, type }) => {
   const { personalInfo, summary, experience, education, skills, certifications, jobProfile } = data;
   const skillsList = skills.split(',').map(s => s.trim()).filter(s => s);
@@ -32,17 +38,19 @@ const ModernTemplate = ({ data, color, type }) => {
             </section>
           )}
 
-          {experience.length > 0 && (
+          {experience.length > 0 && experience.some(e => e.company || e.position) && (
             <section>
               <h2>Experience</h2>
-              {experience.map((exp, index) => (
+              {experience.filter(e => e.company || e.position).map((exp, index) => (
                 <div key={index} className="experience-item">
                   <div className="exp-header">
                     <div>
                       <h3>{exp.position}</h3>
                       <p className="company">{exp.company}</p>
                     </div>
-                    <span className="date">{exp.startDate} - {exp.endDate}</span>
+                    <span className="date">
+                      {formatDateForDisplay(exp.startDate)} - {formatDateForDisplay(exp.endDate)}
+                    </span>
                   </div>
                   {exp.description && <p className="description">{exp.description}</p>}
                 </div>
@@ -50,15 +58,15 @@ const ModernTemplate = ({ data, color, type }) => {
             </section>
           )}
 
-          {education.length > 0 && (
+          {education.length > 0 && education.some(e => e.school || e.degree) && (
             <section>
               <h2>Education</h2>
-              {education.map((edu, index) => (
+              {education.filter(e => e.school || e.degree).map((edu, index) => (
                 <div key={index} className="education-item">
                   <div className="edu-header">
                     <div>
                       <h3>{edu.school}</h3>
-                      <p className="degree">{edu.degree} in {edu.field}</p>
+                      <p className="degree">{edu.degree} {edu.field && `in ${edu.field}`}</p>
                     </div>
                     <span className="date">{edu.startYear} - {edu.endYear}</span>
                   </div>
@@ -86,8 +94,8 @@ const ModernTemplate = ({ data, color, type }) => {
               {certifications.filter(c => c.name).map((cert, index) => (
                 <div key={index} className="cert-item">
                   <h4>{cert.name}</h4>
-                  <p>{cert.issuer}</p>
-                  {cert.date && <p className="date">{cert.date}</p>}
+                  {cert.issuer && <p>{cert.issuer}</p>}
+                  {cert.date && <p className="date">{formatDateForDisplay(cert.date)}</p>}
                 </div>
               ))}
             </section>
