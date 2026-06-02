@@ -54,18 +54,23 @@ const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange,
     
     try {
       const element = templateRef.current;
+      if (!element) {
+        throw new Error('Template element not found');
+      }
       
-      // Wait a moment to ensure the DOM is ready
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Wait for DOM to settle
+      await new Promise(resolve => setTimeout(resolve, 200));
       
       const canvas = await html2canvas(element, {
         scale: 2,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        logging: false,
-        width: element.offsetWidth,
-        height: element.offsetHeight
+        logging: true,
+        width: element.scrollWidth,
+        height: element.scrollHeight,
+        windowWidth: element.scrollWidth,
+        windowHeight: element.scrollHeight
       });
       
       const imgWidth = 210; // A4 width in mm
@@ -81,11 +86,12 @@ const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange,
       
       pdf.addImage(canvas, 'PNG', 0, 0, imgWidth, imgHeight);
       
-      const fileName = `${data.fullName.replace(/\s+/g, '_')}_${type}.pdf`;
+      const userName = data.personalInfo?.name || 'Resume';
+      const fileName = `${userName.replace(/\s+/g, '_')}_${type}.pdf`;
       pdf.save(fileName);
     } catch (error) {
       console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please try again.');
+      alert(`Error generating PDF: ${error.message}`);
     } finally {
       setIsDownloading(false);
     }
