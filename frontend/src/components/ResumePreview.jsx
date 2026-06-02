@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ModernTemplate from './templates/ModernTemplate';
 import ClassicTemplate from './templates/ClassicTemplate';
 import CreativeTemplate from './templates/CreativeTemplate';
 import MinimalistAITemplate from './templates/MinimalistAITemplate';
 import ElegantExecutiveTemplate from './templates/ElegantExecutiveTemplate';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 import './ResumePreview.css';
 
 const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange, onReset }) => {
   const [type, setType] = useState('resume');
+  const [isDownloading, setIsDownloading] = useState(false);
+  const previewRef = useRef(null);
 
   const templates = [
     { id: 'modern', name: 'Modern' },
@@ -45,8 +49,49 @@ const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange,
     }
   };
 
-  const handleDownload = () => {
-    window.print();
+  const handleDownload = async () => {
+    setIsDownloading(true);
+    
+    try {
+      const element = previewRef.current;
+      
+      // Temporarily remove padding/shadow for perfect fit
+      const originalPadding = element.style.padding;
+      const originalShadow = element.style.boxShadow;
+      const originalBorderRadius = element.style.borderRadius;
+      element.style.padding = '0';
+      element.style.boxShadow = 'none';
+      element.style.borderRadius = '0';
+      
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        logging: false
+      });
+      
+      // Restore original styles
+      element.style.padding = originalPadding;
+      element.style.boxShadow = originalShadow;
+      element.style.borderRadius = originalBorderRadius;
+      
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      pdf.addImage(canvas, 'PNG', 0, 0, imgWidth, imgHeight);
+      
+      const fileName = `${data.fullName.replace(/\s+/g, '_')}_${type}.pdf`;
+      pdf.save(fileName);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      // Fallback to print method if PDF generation fails
+      window.print();
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -102,11 +147,17 @@ const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange,
 
         <div className="action-buttons">
           <button className="reset-btn" onClick={onReset}>Edit Details</button>
-          <button className="download-btn" onClick={handleDownload}>Download PDF</button>
+          <button 
+            className="download-btn" 
+            onClick={handleDownload}
+            disabled={isDownloading}
+          >
+            {isDownloading ? 'Generating PDF...' : 'Download PDF'}
+          </button>
         </div>
       </div>
 
-      <div className="preview-wrapper">
+      <div ref={previewRef} className="preview-wrapper">
         {renderTemplate()}
       </div>
     </div>
