@@ -1,6 +1,6 @@
 .minimalist-ai-template {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
   margin: 0 auto;
   background: white;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -194,8 +194,10 @@
 
 @media print {
   .minimalist-ai-template {
-    width: 100%;
-    min-height: auto;
-    padding: 20mm;
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 30px 35px !important;
+    page-break-after: never;
   }
 }

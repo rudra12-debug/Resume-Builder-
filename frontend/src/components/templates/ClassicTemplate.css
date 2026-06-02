@@ -1,6 +1,6 @@
 .classic-template {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
   margin: 0 auto;
   font-family: 'Times New Roman', Times, serif;
   color: #000;
@@ -71,6 +71,8 @@
 
 .classic-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .classic-template section {
@@ -95,7 +97,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .classic-template h3 {
@@ -110,7 +112,7 @@
 
 .date {
   color: #444;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   white-space: nowrap;
 }
 
@@ -134,8 +136,10 @@
 
 @media print {
   .classic-template {
-    width: 100%;
-    min-height: auto;
-    padding: 20mm;
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 35px 40px !important;
+    page-break-after: never;
   }
 }

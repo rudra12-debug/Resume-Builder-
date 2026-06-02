@@ -172,6 +172,7 @@
     background: white !important;
     margin: 0 !important;
     padding: 0 !important;
+    height: 100% !important;
   }
   
   .resume-preview-container {
@@ -194,7 +195,7 @@
   }
   
   @page {
-    margin: 10mm;
+    margin: 0;
     size: A4;
   }
 }

@@ -1,6 +1,6 @@
 .creative-template {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -52,6 +52,8 @@
 .sidebar-content {
   padding: 20px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .creative-sidebar section {
@@ -225,7 +227,10 @@
 
 @media print {
   .creative-template {
-    width: 100%;
-    min-height: auto;
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: never;
   }
 }
