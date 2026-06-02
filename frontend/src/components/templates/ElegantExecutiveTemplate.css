@@ -1,14 +1,17 @@
 .elegant-executive-template {
-  max-width: 900px;
+  width: 210mm;
+  min-height: 297mm;
   margin: 0 auto;
   background: white;
   font-family: 'Georgia', 'Times New Roman', serif;
   color: #2c2c2c;
+  display: flex;
+  flex-direction: column;
 }
 
 .ee-header {
   position: relative;
-  padding: 50px 40px 30px;
+  padding: 40px 35px 25px;
   text-align: center;
   overflow: hidden;
 }
@@ -18,7 +21,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 180px;
+  height: 160px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   z-index: 0;
 }
@@ -29,13 +32,13 @@
 }
 
 .profile-img-container {
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
   border: 6px solid white;
   box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
 }
 
 .profile-img {
@@ -45,27 +48,27 @@
 }
 
 .ee-header h1 {
-  font-size: 2.8rem;
-  margin: 0 0 8px;
+  font-size: 2.2rem;
+  margin: 0 0 6px;
   color: #1a1a1a;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--primary);
   font-weight: 600;
-  margin: 0 0 20px;
+  margin: 0 0 15px;
   font-style: italic;
 }
 
 .contact-line {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #444;
 }
 
@@ -84,32 +87,33 @@
 }
 
 .ee-body {
-  padding: 30px 40px 50px;
+  padding: 25px 35px 40px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  gap: 30px;
+  flex: 1;
 }
 
 .content-section {
-  margin-bottom: 35px;
+  margin-bottom: 28px;
 }
 
 .section-title {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .line-decoration {
-  width: 50px;
+  width: 45px;
   height: 3px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   border-radius: 2px;
 }
 
 .section-title h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #333;
@@ -117,19 +121,19 @@
 }
 
 .experience-entry, .education-entry {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .entry-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .experience-entry h4, .education-entry h4 {
-  font-size: 1.15rem;
-  margin: 0 0 5px;
+  font-size: 1.05rem;
+  margin: 0 0 4px;
   color: #222;
 }
 
@@ -142,14 +146,15 @@
 
 .date-range {
   color: #777;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
 .summary-text, .entry-description {
-  line-height: 1.8;
+  line-height: 1.6;
   color: #444;
   margin: 0;
+  font-size: 0.95rem;
 }
 
 .skills-list {
@@ -158,9 +163,9 @@
 }
 
 .skills-list li {
-  padding: 8px 0;
+  padding: 6px 0;
   border-bottom: 1px dotted #ddd;
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   color: #444;
 }
 
@@ -169,24 +174,32 @@
 }
 
 .cert-entry {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .cert-name {
   font-weight: 600;
-  margin: 0 0 3px;
+  margin: 0 0 2px;
   color: #222;
+  font-size: 0.95rem;
 }
 
 .cert-org {
   color: #555;
-  margin: 0 0 2px;
-  font-size: 0.95rem;
+  margin: 0 0 1px;
+  font-size: 0.9rem;
 }
 
 .cert-date {
   color: #888;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-style: italic;
   margin: 0;
+}
+
+@media print {
+  .elegant-executive-template {
+    width: 100%;
+    min-height: auto;
+  }
 }

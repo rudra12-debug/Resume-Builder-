@@ -1,5 +1,6 @@
 .creative-template {
-  max-width: 900px;
+  width: 210mm;
+  min-height: 297mm;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -17,11 +18,11 @@
 }
 
 .profile-img-container {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 30px auto 15px;
+  margin: 25px auto 12px;
   border: 5px solid rgba(255,255,255,0.3);
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
@@ -33,55 +34,56 @@
 }
 
 .creative-name-box {
-  padding: 20px 25px 30px;
+  padding: 15px 20px 25px;
   border-bottom: 2px solid rgba(255,255,255,0.2);
   text-align: center;
 }
 
 .creative-name-box h1 {
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-bottom: 5px;
 }
 
 .job-title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 0.9;
 }
 
 .sidebar-content {
-  padding: 25px;
+  padding: 20px;
+  flex: 1;
 }
 
 .creative-sidebar section {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .creative-sidebar h2 {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
+  font-size: 1rem;
+  margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-bottom: 2px solid rgba(255,255,255,0.3);
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 .skills-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .skill-item {
   background: rgba(255,255,255,0.2);
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 4px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .contact-list p {
-  margin-bottom: 12px;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .contact-list a {
@@ -94,16 +96,16 @@
 }
 
 .cert-item {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .cert-item h4 {
   margin-bottom: 3px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .cert-item p {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   opacity: 0.9;
 }
 
@@ -112,26 +114,28 @@
 }
 
 .creative-main {
-  padding: 40px 35px;
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .creative-main section {
-  margin-bottom: 35px;
+  margin-bottom: 28px;
 }
 
 .section-title {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .section-title h2 {
   color: var(--primary);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
-  padding-left: 20px;
+  padding-left: 18px;
 }
 
 .section-title h2::before {
@@ -140,30 +144,31 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: var(--primary);
   border-radius: 50%;
 }
 
 .summary-text {
-  line-height: 1.7;
+  line-height: 1.5;
   color: #444;
+  font-size: 0.95rem;
 }
 
 .timeline-item {
   display: flex;
-  gap: 15px;
-  margin-bottom: 30px;
+  gap: 12px;
+  margin-bottom: 24px;
   position: relative;
 }
 
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: 11px;
-  top: 25px;
-  bottom: -30px;
+  left: 10px;
+  top: 22px;
+  bottom: -24px;
   width: 2px;
   background: #e0e0e0;
 }
@@ -173,8 +178,8 @@
 }
 
 .timeline-dot {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   border-radius: 50%;
   flex-shrink: 0;
@@ -192,26 +197,35 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .creative-main h3 {
   color: #222;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
 }
 
 .company, .degree {
   color: var(--primary);
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .date {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   white-space: nowrap;
 }
 
 .description {
   color: #444;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+@media print {
+  .creative-template {
+    width: 100%;
+    min-height: auto;
+  }
 }

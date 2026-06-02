@@ -1,31 +1,34 @@
 .minimalist-ai-template {
-  max-width: 900px;
+  width: 210mm;
+  min-height: 297mm;
   margin: 0 auto;
   background: white;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   color: #1a1a1a;
-  padding: 40px;
+  padding: 30px 35px;
+  display: flex;
+  flex-direction: column;
 }
 
 .m-ai-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 50px;
-  padding-bottom: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
   border-bottom: 1px solid #eee;
 }
 
 .header-left {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   align-items: center;
 }
 
 .profile-img-container {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   flex-shrink: 0;
@@ -38,14 +41,14 @@
 }
 
 .name-section h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0 0 5px;
   color: #111;
 }
 
 .job-title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--primary);
   font-weight: 500;
   margin: 0;
@@ -54,21 +57,21 @@
 .contact-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   text-align: right;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   justify-content: flex-end;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #555;
 }
 
 .contact-item .icon {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .contact-item a {
@@ -84,36 +87,37 @@
 .m-ai-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  gap: 30px;
+  flex: 1;
 }
 
 .section-label {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #999;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-weight: 600;
 }
 
 .main-section section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .exp-block, .edu-block {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .exp-header, .edu-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .exp-block h3, .edu-block h3 {
-  font-size: 1.2rem;
-  margin: 0 0 5px;
+  font-size: 1.05rem;
+  margin: 0 0 4px;
 }
 
 .company, .school {
@@ -124,32 +128,33 @@
 
 .period {
   color: #888;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
 .summary, .desc {
   color: #444;
-  line-height: 1.7;
+  line-height: 1.5;
   margin: 0;
+  font-size: 0.95rem;
 }
 
 .side-section section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .skills-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .skill-bubble {
   background: linear-gradient(135deg, #f5f5f5, #fafafa);
   border: 1px solid #eee;
-  padding: 8px 16px;
+  padding: 6px 14px;
   border-radius: 100px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #333;
   transition: all 0.2s ease;
 }
@@ -163,25 +168,34 @@
 
 .cert-card {
   background: #f8f9ff;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .cert-name {
   font-weight: 600;
-  margin: 0 0 5px;
+  margin: 0 0 4px;
   color: #222;
+  font-size: 0.95rem;
 }
 
 .cert-issuer {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #555;
-  margin: 0 0 3px;
+  margin: 0 0 2px;
 }
 
 .cert-date {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #888;
   margin: 0;
+}
+
+@media print {
+  .minimalist-ai-template {
+    width: 100%;
+    min-height: auto;
+    padding: 20mm;
+  }
 }
