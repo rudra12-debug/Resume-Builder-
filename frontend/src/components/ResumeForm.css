@@ -207,3 +207,70 @@ textarea {
 .remove-img-btn:hover {
   background: #ee5a5a;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .resume-form-container {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .resume-form-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .profile-upload-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .upload-controls {
+    width: 100%;
+  }
+  
+  .upload-btn, .remove-img-btn {
+    width: 100%;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .date-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .add-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-form-container {
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .resume-form-container h1 {
+    font-size: 1.5rem;
+  }
+  
+  .profile-preview {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .placeholder-icon {
+    font-size: 2.5rem;
+  }
+}

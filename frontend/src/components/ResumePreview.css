@@ -1,6 +1,7 @@
 .resume-preview-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 10px;
 }
 
 .controls {
@@ -11,8 +12,8 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
-  align-items: center;
+  gap: 20px;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -31,6 +32,7 @@
 .type-buttons, .template-buttons, .color-buttons {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .type-buttons button, .template-buttons button {
@@ -41,6 +43,7 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .type-buttons button:hover, .template-buttons button:hover {
@@ -61,6 +64,7 @@
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .color-btn:hover {
@@ -75,6 +79,7 @@
 .action-buttons {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .reset-btn, .download-btn {
@@ -111,19 +116,85 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  overflow-x: auto;
 }
 
-@media print {
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
   .controls {
-    display: none;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .control-group {
+    width: 100%;
+  }
+  
+  .type-buttons, .template-buttons, .color-buttons {
+    width: 100%;
+  }
+  
+  .type-buttons button, .template-buttons button {
+    flex: 1;
+    min-width: fit-content;
+  }
+  
+  .action-buttons {
+    width: 100%;
+  }
+  
+  .reset-btn, .download-btn {
+    flex: 1;
+    min-width: fit-content;
+  }
+}
+
+@media (max-width: 480px) {
+  .type-buttons, .template-buttons {
+    flex-direction: column;
+  }
+  
+  .type-buttons button, .template-buttons button {
+    width: 100%;
+  }
+}
+
+/* Perfect Print Styling */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  html, body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .resume-preview-container {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .controls {
+    display: none !important;
   }
   
   .preview-wrapper {
-    box-shadow: none;
-    padding: 0;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
   }
   
   body {
-    background: white;
+    background: white !important;
+  }
+  
+  @page {
+    margin: 10mm;
+    size: A4;
   }
 }
