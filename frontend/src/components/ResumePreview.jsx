@@ -11,7 +11,7 @@ import './ResumePreview.css';
 const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange, onReset }) => {
   const [type, setType] = useState('resume');
   const [isDownloading, setIsDownloading] = useState(false);
-  const previewRef = useRef(null);
+  const templateRef = useRef(null);
 
   const templates = [
     { id: 'modern', name: 'Modern' },
@@ -53,42 +53,39 @@ const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange,
     setIsDownloading(true);
     
     try {
-      const element = previewRef.current;
+      const element = templateRef.current;
       
-      // Temporarily remove padding/shadow for perfect fit
-      const originalPadding = element.style.padding;
-      const originalShadow = element.style.boxShadow;
-      const originalBorderRadius = element.style.borderRadius;
-      element.style.padding = '0';
-      element.style.boxShadow = 'none';
-      element.style.borderRadius = '0';
+      // Wait a moment to ensure the DOM is ready
+      await new Promise(resolve => setTimeout(resolve, 100));
       
       const canvas = await html2canvas(element, {
         scale: 2,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        logging: false
+        logging: false,
+        width: element.offsetWidth,
+        height: element.offsetHeight
       });
-      
-      // Restore original styles
-      element.style.padding = originalPadding;
-      element.style.boxShadow = originalShadow;
-      element.style.borderRadius = originalBorderRadius;
       
       const imgWidth = 210; // A4 width in mm
       const pageHeight = 297; // A4 height in mm
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       
-      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+        compress: true
+      });
+      
       pdf.addImage(canvas, 'PNG', 0, 0, imgWidth, imgHeight);
       
       const fileName = `${data.fullName.replace(/\s+/g, '_')}_${type}.pdf`;
       pdf.save(fileName);
     } catch (error) {
       console.error('Error generating PDF:', error);
-      // Fallback to print method if PDF generation fails
-      window.print();
+      alert('Error generating PDF. Please try again.');
     } finally {
       setIsDownloading(false);
     }
@@ -157,8 +154,10 @@ const ResumePreview = ({ data, template, color, onTemplateChange, onColorChange,
         </div>
       </div>
 
-      <div ref={previewRef} className="preview-wrapper">
-        {renderTemplate()}
+      <div className="preview-wrapper">
+        <div ref={templateRef}>
+          {renderTemplate()}
+        </div>
       </div>
     </div>
   );
